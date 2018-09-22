@@ -1,48 +1,12 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $producto->id !!}</p>
-</div>
-
-<!-- Codigo Field -->
-<div class="form-group">
-    {!! Form::label('codigo', 'Codigo:') !!}
-    <p>{!! $producto->codigo !!}</p>
-</div>
-
-<!-- Nombre Field -->
-<div class="form-group">
-    {!! Form::label('nombre', 'Nombre:') !!}
-    <p>{!! $producto->nombre !!}</p>
-</div>
-
-<!-- Costo Field -->
-<div class="form-group">
-    {!! Form::label('costo', 'Costo:') !!}
-    <p>{!! $producto->costo !!}</p>
-</div>
-
-<!-- Precio Field -->
-<div class="form-group">
-    {!! Form::label('precio', 'Precio:') !!}
-    <p>{!! $producto->precio !!}</p>
-</div>
-
-<!-- Stock Field -->
-<div class="form-group">
-    {!! Form::label('stock', 'Stock:') !!}
-    <p>{!! $producto->stock !!}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $producto->created_at !!}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $producto->updated_at !!}</p>
-</div>
-
+<dl class="dl-horizontal">
+    <dt>Codigo:</dt>
+    <dd>{!! $producto->codigo !!}</dd>
+    <dt>Producto:</dt>
+    <dd>{!! $producto->nombre !!}</dd>
+    <dt>Costo:</dt>
+    <dd>{!! $producto->costo !!}</dd>
+    <dt>Precio:</dt>
+    <dd>{!! $producto->precio !!}</dd>
+    <dt>Stock:</dt>
+    <dd>{!! $producto->stock !!}</dd>
+</dl>

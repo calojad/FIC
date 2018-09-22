@@ -1,6 +1,6 @@
 <!-- Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', 'Nombre:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -20,12 +20,6 @@
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Password:') !!}
     {!! Form::password('password', ['class' => 'form-control']) !!}
-</div>
-
-<!-- Remember Token Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    {!! Form::text('remember_token', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

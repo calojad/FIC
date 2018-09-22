@@ -1,19 +1,24 @@
 @extends('layouts.app')
-
+@section('contentHeader')
+    <h1 class="white" style="color: white">
+        Comercial Ureña
+        <small>Productos</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a>Mantenimiento</a></li>
+        <li><a>Producto</a></li>
+        <li><a>Ver</a></li>
+    </ol>
+@endsection
 @section('content')
-    <section class="content-header">
-        <h1>
-            Producto
-        </h1>
-    </section>
-    <div class="content">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
-                    @include('productos.show_fields')
-                    <a href="{!! route('productos.index') !!}" class="btn btn-default">Back</a>
-                </div>
-            </div>
+    <div class="box box-primary col-md-5 col-md-offset-3">
+        <div class="box-header with-border"></div>
+        <div class="box-body">
+            @include('productos.show_fields')
+        </div>
+        <div class="box-footer">
+            <a href="{!! route('productos.index') !!}" class="btn btn-default">Back</a>
         </div>
     </div>
 @endsection

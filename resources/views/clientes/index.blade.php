@@ -24,4 +24,5 @@
             </div>
         </div>
     </div>
+    @include('clientes.scripts')
 @endsection
