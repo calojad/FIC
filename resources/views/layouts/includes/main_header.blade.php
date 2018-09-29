@@ -4,9 +4,9 @@
         <div class="container">
             <div class="navbar-header">
                 <!-- Logo -->
-                <a href="{{URL::to('/home')}}" class="navbar-brand btnLoader">
+                {{--<a href="{{URL::to('/home')}}" class="navbar-brand btnLoader">
                     <b>CU</b><i>SISTEM</i>
-                </a>
+                </a>--}}
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -14,10 +14,10 @@
             <!-- Navbar Left Menu -->
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="btnLoader" href="{{URL::to('/venta')}}" style="background-color: #f39c12 "><span class="glyphicon glyphicon-shopping-cart" ></span> Ventas</a></li>
-                    <li><a class="btnLoader" href="#"style="background-color: #2E7D32;"><span class="glyphicon glyphicon-barcode" ></span> Inventario</a></li>
+                    <li><a class="btnLoader" href="{{URL::to('/venta')}}" ><span class="glyphicon glyphicon-shopping-cart" style="color: #FD7B1D"></span> Ventas</a></li>
+                    <li><a class="btnLoader" href="#"><span class="glyphicon glyphicon-barcode" style="color: #00C853"></span> Inventario</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"style="background-color: #ff3d00"><span class="glyphicon glyphicon-wrench" ></span> Mantenimiento <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench" style="color: #D50000"></span> Mantenimiento <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a class="btnLoader" href="{{URL::to('/clientes')}}"><i class="fa fa-users"></i> Clientes</a>

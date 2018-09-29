@@ -20,7 +20,7 @@
                 <a class="btn btn-primary pull-right" style="margin-bottom: 5px"
                    href="{!! route('usuarios.create') !!}">Add New</a>
             </div>--}}
-            <div class="col-md-12">
+            <div class="col-md-12 table-responsive">
                 @include('usuarios.table')
             </div>
         </div>

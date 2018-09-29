@@ -29,15 +29,15 @@
 
         <div class="box-footer">
             <div class="col-xs-offset-8">
-                <dl class="dl-horizontal">
+                <dl class="dl-horizontal" style="font-size: 14pt">
                     <dt>Subtotal:</dt>
-                    <dd>$ 0.00</dd>
+                    <dd id="subtotal">$ 0.00</dd>
                     <dt>IVA 12%:</dt>
-                    <dd>$ 0.00</dd>
+                    <dd id="iva">$ 0.00</dd>
                     <dt>Descuento:</dt>
-                    <dd>$ 0.00</dd>
+                    <dd id="descuento">$ 0.00</dd>
                     <dt>TOTAL:</dt>
-                    <dd>$ 0.00</dd>
+                    <dd id="totalTotal" class="bg-black">$ 0.00</dd>
                 </dl>
             </div>
         </div>

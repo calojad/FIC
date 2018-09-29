@@ -37,10 +37,8 @@
     </div>
     <div class="login-box-body"  style="border-radius: 20px">
         <p class="login-box-msg">Iniciar Sesión</p>
-
         <form method="post" action="{{ url('/login') }}">
             {!! csrf_field() !!}
-
             <div class="form-group has-feedback {{ $errors->has('username') ? ' has-error' : '' }}">
                 <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -50,7 +48,6 @@
                 </span>
                 @endif
             </div>
-
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control" placeholder="Password" name="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -59,7 +56,6 @@
                     <strong>{{ $errors->first('password') }}</strong>
                 </span>
                 @endif
-
             </div>
             <div class="row">
                 <div class="col-xs-8">
@@ -74,14 +70,10 @@
                 </div>
             </div>
         </form>
-
         <a href="{{ url('/password/reset') }}">¿Olvidaste tu contraseña?</a><br>
         {{--<a href="{{ url('/register') }}" class="text-center">Registrarce</a>--}}
-
     </div>
-    <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
 
 <!-- jQuery 3.1.1 -->
 {!! Html::script('plugins/jquery/jquery-3.3.1.min.js') !!}
@@ -104,7 +96,10 @@
     });
     $('#btnLogin').on('click',function () {
         $(".preloader").fadeIn("slow");
-    })
+    });
+    $(document).ready(function () {
+        $('input[name=username]').focus();
+    });
 </script>
 </body>
 </html>

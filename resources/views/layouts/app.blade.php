@@ -4,14 +4,13 @@
     @include('layouts.includes.heads')
     @yield('css')
 </head>
-
-<body class="layout-top-nav skin-blue">
+<body class="layout-top-nav skin-blue" style="top:;">
 <div id="preloader" class='preloader'><div class='loaded'>&nbsp;</div></div>
 <div class="wrapper">
     <!-- Main Header -->
     @include('layouts.includes.main_header')
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" style="background: url('{{asset('images/ferreteria-banner.jpg')}}')">
+    <div class="content-wrapper contenido-w-mt" style="background: url('{{asset('images/ferreteria-banner.jpg')}}');">
         <div class="container">
             <section class="content-header">
                 @yield('contentHeader')
@@ -21,12 +20,18 @@
             </section>
         </div>
     </div>
-
     <!-- Main Footer -->
-    <footer class="main-footer" style="max-height: 100px;text-align: center">
-        <strong>Copyright © {{Date('Y')}} | <a href="http://www.cal-webdes.com">Cal-Webdes</a>.</strong> All rights reserved.
+    <footer id="status" class="footer-gray footer-fixed-bottom">
+        <div class="col-md-2 sombra-interna">
+            <a style="cursor: pointer"><i class="fa fa-circle text-success"></i> Online</a>
+            <span class="pull-right"> {{Date('d/M/Y')}}</span>
+        </div>
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-3 sombra-interna">
+            <span>© FIC - <a href="http://www.cal-webdes.com">Cal-Webdes</a> - All right's reserved</span>
+        </div>
     </footer>
-
 </div>
 
 @include('layouts.includes.scripts')

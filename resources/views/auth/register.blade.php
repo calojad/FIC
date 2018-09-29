@@ -48,18 +48,15 @@
                     </span>
                 @endif
             </div>
-
             <div class="form-group has-feedback{{ $errors->has('username') ? ' has-error' : '' }}">
                 <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Nombre de usuario">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
-
                 @if ($errors->has('username'))
                     <span class="help-block">
                         <strong>{{ $errors->first('username') }}</strong>
                     </span>
                 @endif
             </div>
-
             <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
                 <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -69,29 +66,24 @@
                     </span>
                 @endif
             </div>
-
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control" name="password" placeholder="Password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
                 @if ($errors->has('password'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password') }}</strong>
                     </span>
                 @endif
             </div>
-
             <div class="form-group has-feedback{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                 <input type="password" name="password_confirmation" class="form-control" placeholder="Confirmar password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
                 @if ($errors->has('password_confirmation'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                     </span>
                 @endif
             </div>
-
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
@@ -100,19 +92,14 @@
                         </label>
                     </div>
                 </div>
-                <!-- /.col -->
                 <div class="col-xs-4">
                     <button id="btnRegistre" type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
                 </div>
-                <!-- /.col -->
             </div>
         </form>
-
         <a href="{{ url('/login') }}" class="text-center">Ya estoy registrado</a>
     </div>
-    <!-- /.form-box -->
 </div>
-<!-- /.register-box -->
 
 <!-- jQuery 3.1.1 -->
 {!! Html::script('plugins/jquery/jquery-3.3.1.min.js') !!}
@@ -136,6 +123,9 @@
     $('#btnRegistre').on('click',function () {
         $(".preloader").fadeIn("slow");
     })
+    $(document).ready(function () {
+        $('input[name=name]').focus();
+    });
 </script>
 </body>
 </html>

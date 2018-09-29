@@ -2,7 +2,7 @@
 @section('contentHeader')
     <h1 class="white" style="color: white">
         Comercial Ureña
-        <small>CUSistem</small>
+        <small>Home</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
