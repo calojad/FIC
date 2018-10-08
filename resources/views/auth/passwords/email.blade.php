@@ -30,11 +30,11 @@
     <![endif]-->
 
 </head>
-<body class="hold-transition" style="background: url('{{asset('images/construction.jpg')}}')">
+<body class="hold-transition login-page">
 <div id="preloader" class='preloader'><div class='loaded'>&nbsp;</div></div>
 <div class="login-box">
     <div class="login-logo login-page">
-        <a href="{{ url('/') }}"><b>CU</b><i>SISTEM</i></a>
+        <a href="{{ url('/') }}">{{config('app.name','Laravel')}}</a>
     </div>
 
     <!-- /.login-logo -->

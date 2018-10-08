@@ -6,9 +6,8 @@ use App\Http\Requests\CreateClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 use App\Models\Cliente;
 use App\Repositories\ClienteRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -98,7 +97,7 @@ class ClienteController extends AppBaseController
     /**
      * Update the specified Cliente in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateClienteRequest $request
      *
      * @return Response
@@ -134,14 +133,15 @@ class ClienteController extends AppBaseController
         return redirect(route('clientes.index'));
     }
 
-    public function autocomplete(Request $request){
-        $auto_clientes = [0=>'No hay datos'];
+    public function autocomplete(Request $request)
+    {
+        $auto_clientes = [0 => 'No hay datos'];
         $search = $request->term;
-        $clientes = Cliente::where('cedula','LIKE',$search.'%')
+        $clientes = Cliente::where('cedula', 'LIKE', $search . '%')
             ->get();
-        if(count($clientes)!=0){
-            $auto_clientes=null;
-            foreach ($clientes as $cliente){
+        if (count($clientes) != 0) {
+            $auto_clientes = null;
+            foreach ($clientes as $cliente) {
                 $auto_clientes[] = [
                     'value' => $cliente->id,
                     'label' => $cliente->cedula,

@@ -3,16 +3,15 @@
 </div>
 <div class="box-body">
     <div class="col-md-12">
-        <div class="form-group">
+        <div id="divCIRUC" class="form-group">
             <label for="cedula" class="col-sm-2" style="text-align: right">CI/RUC:</label>
             <div class="input-group col-md-3">
-                <input id="cedula" name="cedula" type="text" maxlength="13" class="form-control"
-                       style="height: 28px;">
-                <a class="input-group-addon" href="">
+                <input id="cedula" type="text" maxlength="13" class="form-control" value="" style="height: 28px;">
+                <a class="input-group-addon" href="" title="Buscar Cliente">
                     <i class="fa fa-users"></i>
                 </a>
             </div>
-            <input id="clienteId" name="cliente_id" type="hidden">
+            <input id="clienteId" type="hidden" value="">
         </div>
         <div class="col-md-6">
             <dl class="dl-horizontal">

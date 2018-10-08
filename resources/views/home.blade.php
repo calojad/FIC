@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('contentHeader')
-    <h1 class="white" style="color: white">
-        Comercial Ureña
+    <h1>
+        {{config('app.name','FIC')}}
         <small>Home</small>
     </h1>
     <ol class="breadcrumb">

@@ -14,6 +14,7 @@
             <!-- Navbar Left Menu -->
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                 <ul class="nav navbar-nav">
+                    <li><a href="/home"><span class="glyphicon glyphicon-home"></span></a></li>
                     <li><a class="btnLoader" href="{{URL::to('/venta')}}" ><span class="glyphicon glyphicon-shopping-cart" style="color: #FD7B1D"></span> Ventas</a></li>
                     <li><a class="btnLoader" href="#"><span class="glyphicon glyphicon-barcode" style="color: #00C853"></span> Inventario</a></li>
                     <li class="dropdown">
@@ -59,9 +60,8 @@
                                     <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                 </div>--}}
                                 <div class="pull-right">
-                                    <button href="{!! url('/logout') !!}" type="button" class="btn btn-danger"
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-sign-out"></i> Salir
+                                    <button href="{!! url('/logout') !!}" type="button" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i> Salir
                                     </button>
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST">
                                         {{ csrf_field() }}

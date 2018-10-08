@@ -26,10 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('venta/search/cliente', 'ClienteController@autocomplete');
     Route::get('venta/search/producto/codigo', 'ProductoController@autocompletecodigo');
     Route::get('venta/search/producto/nombre', 'ProductoController@autocompletenombre');
-//*****CLIENTES
+    Route::post('/venta', 'FacturaController@generarfactura');
+//*****MANTENIMIENTOS
     Route::resource('clientes', 'ClienteController');
+    Route::resource('productos', 'ProductoController');
+    Route::resource('usuarios', 'UsuarioController');
 });
-
-Route::resource('productos', 'ProductoController');
-
-Route::resource('usuarios', 'UsuarioController');

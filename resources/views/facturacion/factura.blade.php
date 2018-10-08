@@ -11,8 +11,8 @@
     </style>
 @endsection
 @section('contentHeader')
-    <h1 class="white" style="color: white">
-        Comercial Ureña
+    <h1>
+        {{config('app.name','FIC')}}
         <small>Factura</small>
     </h1>
     <ol class="breadcrumb">
@@ -22,23 +22,25 @@
 @endsection
 @section('content')
     <div class="box box-warning box-solid">
-
         @include('facturacion.cabecera')
-
         @include('facturacion.detalle')
-
         <div class="box-footer">
-            <div class="col-xs-offset-8">
-                <dl class="dl-horizontal" style="font-size: 14pt">
-                    <dt>Subtotal:</dt>
-                    <dd id="subtotal">$ 0.00</dd>
-                    <dt>IVA 12%:</dt>
-                    <dd id="iva">$ 0.00</dd>
-                    <dt>Descuento:</dt>
-                    <dd id="descuento">$ 0.00</dd>
-                    <dt>TOTAL:</dt>
-                    <dd id="totalTotal" class="bg-black">$ 0.00</dd>
-                </dl>
+            <div class="col-md-11">
+                <div class="col-md-6 pull-left">
+                    <a id="btnGuardarFactura" class="btn btn-primary"><i class="fa fa-save"></i> Guardar Factura</a>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal pull-right" style="font-size: 13pt;text-align: right">
+                        <dt>Subtotal:</dt>
+                        <dd>$ <span id="subtotal">0.00</span></dd>
+                        <dt>IVA 12%:</dt>
+                        <dd>$ <span id="iva">0.00</span></dd>
+                        <dt>Descuento:</dt>
+                        <dd>$ <span id="descuento">0.00</span></dd>
+                        <dt>TOTAL:</dt>
+                        <dd id="totalTotal" class="bg-black" style="padding: 2px"> $ 0.00</dd>
+                    </dl>
+                </div>
             </div>
         </div>
     </div>

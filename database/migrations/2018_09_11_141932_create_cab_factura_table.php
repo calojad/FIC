@@ -15,11 +15,13 @@ class CreateCabFacturaTable extends Migration
     {
         Schema::create('cab_factura', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('num_factura');
             $table->integer('cliente_id')->unsigned();
             $table->decimal('subtotal','16','3');
             $table->decimal('iva','16','3');
             $table->decimal('descuento','16','3');
             $table->decimal('total','16','3');
+            $table->integer('usuario_id')->unsigned();
             $table->timestamps();
         });
     }

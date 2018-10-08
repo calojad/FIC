@@ -29,11 +29,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition" style="background: url('{{asset('images/construction.jpg')}}')">
+<body class="hold-transition login-page">
 <div id="preloader" class='preloader'><div class='loaded'>&nbsp;</div></div>
 <div class="login-box">
     <div class="login-logo login-page">
-        <a href="{{ url('/') }}"><b>CU</b><i>SISTEM</i></a>
+        <a href="{{ url('/') }}">{{config('app.name','Laravel')}}</a>
     </div>
     <div class="login-box-body"  style="border-radius: 20px">
         <p class="login-box-msg">Iniciar Sesión</p>

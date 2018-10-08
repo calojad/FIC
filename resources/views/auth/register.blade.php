@@ -29,11 +29,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition" style="background: url('{{asset('images/construction.jpg')}}')">
+<body class="hold-transition register-page">
 <div id="preloader" class='preloader'><div class='loaded'>&nbsp;</div></div>
 <div class="register-box">
     <div class="register-logo register-page">
-        <a href="{{ url('/') }}"><b>CU</b><i>SISTEM</i></a>
+        <a href="{{ url('/') }}">{{config('app.name','Laravel')}}</a>
     </div>
     <div class="register-box-body" style="border-radius: 20px">
         <p class="login-box-msg">Registrarce</p>

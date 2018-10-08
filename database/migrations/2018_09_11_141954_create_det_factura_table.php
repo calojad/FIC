@@ -18,6 +18,7 @@ class CreateDetFacturaTable extends Migration
             $table->integer('cab_factura_id')->unsigned();
             $table->integer('producto_id')->unsigned();
             $table->integer('cantidad');
+            $table->integer('descuento');
             $table->decimal('total','16','3');
             $table->timestamps();
         });

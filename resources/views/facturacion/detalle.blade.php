@@ -22,9 +22,10 @@
         <div class="form-group col-md-3">
             <br>
             <a id="btnAddProducto" class="btn btn-primary" style="cursor: pointer">Añadir</a>
+            <a id="btnBuscarProducto" class="btn btn-success" title="Buscar Producto" style="cursor: pointer"><i class="fa fa-search"></i></a>
         </div>
     </div>
-    <div class="content table-responsive">
+    <div class="col-md-12 table-responsive">
         <table class="table table-responsive table-striped table-bordered table-hover table-checkable datatable" id="tblDetalle">
             <thead>
             <tr>
@@ -32,7 +33,7 @@
                 <th>Descripcion</th>
                 <th>Cant.</th>
                 <th>P. Unitario</th>
-                <th>Descuento</th>
+                <th>Descuento (%)</th>
                 <th>Total</th>
                 <th></th>
             </tr>

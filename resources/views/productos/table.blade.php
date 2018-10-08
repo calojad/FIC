@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th>Codigo</th>
-        <th>Nombre</th>
+        <th>Producto</th>
         <th>Costo</th>
         <th>Precio</th>
         <th>Stock</th>

@@ -10,3 +10,5 @@
 <!-- DataTables -->
 {!! Html::script('adminLTE-2.4.3/bower_components/datatables/js/jquery.dataTables.js') !!}
 {!! Html::script('adminLTE-2.4.3/bower_components/datatables/js/dataTables.bootstrap.js') !!}
+<!-- jQuery-Alerts -->
+{!! Html::script('plugins/jquery_alerts/jquery-confirm.min.js') !!}
