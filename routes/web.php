@@ -16,17 +16,18 @@
 
 //*****RUTAS CON AUTENTICACION
 Auth::routes();
+
 //*****GRUPO DE RUTAS
 Route::group(['middleware' => 'auth'], function () {
+
 //*****HOME
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/', function () {return view('home');});
-//*****VENTAS - FACTURACION
-    Route::get('/venta', function (){return view('facturacion.factura');})->name('home');
-    Route::get('venta/search/cliente', 'ClienteController@autocomplete');
-    Route::get('venta/search/producto/codigo', 'ProductoController@autocompletecodigo');
-    Route::get('venta/search/producto/nombre', 'ProductoController@autocompletenombre');
-    Route::post('/venta', 'FacturaController@generarfactura');
+
+    AdvancedRoute::controller('/venta','FacturaController');
+    AdvancedRoute::controller('/cliente','ClienteController');
+    AdvancedRoute::controller('/producto','ProductoController');
+
 //*****MANTENIMIENTOS
     Route::resource('clientes', 'ClienteController');
     Route::resource('productos', 'ProductoController');

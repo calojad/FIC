@@ -135,7 +135,7 @@ class ClienteController extends AppBaseController
     /*
      * Mis funciones del objeto cliente
      */
-    public function autocomplete(Request $request)
+    public function getAutocompletecedula(Request $request)
     {
         $search = $request->term;
         $clientes = Cliente::where('cedula', 'LIKE', $search . '%')

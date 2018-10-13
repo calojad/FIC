@@ -3,7 +3,7 @@
     $('#cedula').on('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
         $(this).autocomplete({
-            source: '{{URL::to('venta/search/cliente')}}',
+            source: '{{URL::to('cliente/autocompletecedula')}}',
             minLength: 2,
             focus: function (event, ui) {
                 $("#cedula").val(ui.item.cedula);
@@ -25,7 +25,7 @@
     // Autocomplite para buscar un producto por su codigo
     $('#prodCodigo').on('input', function () {
         $(this).autocomplete({
-            source: '{{URL::to('venta/search/producto/codigo')}}',
+            source: '{{URL::to('producto/autocompletecodigo')}}',
             minLength: 2,
             focus: function (event, ui) {
                 $("#prodCodigo").val(ui.item.codigo);
@@ -43,7 +43,7 @@
     // Autocomplite para buscar un producto por su nombre
     $('#prodNombre').on('input', function () {
         $(this).autocomplete({
-            source: '{{URL::to('venta/search/producto/nombre')}}',
+            source: '{{URL::to('producto/autocompletenombre')}}',
             minLength: 2,
             focus: function (event, ui) {
                 $("#prodNombre").val(ui.item.nombre);
@@ -69,6 +69,17 @@
             var id = $('#prodId');
             addDetalle(id);
         }
+    });
+    // Boton buscar producto
+    $('#btnBuscarProducto').on('click', function () {
+        $.dialog({
+            title: 'Listado de Productos',
+            content: 'url:/venta/modallistaproductos',
+            icon: 'fa fa-archive',
+            columnClass: 'large',
+            escapeKey: true,
+            backgroundDismiss: true,
+        });
     });
     // Input cantidad en la tabla; cambia cantidad y calcule el nuevo valor del producto
     $(document).on('keypress change', '.inpCantidad', function () {
@@ -122,7 +133,7 @@
                     );
                 });
                 //Prepara datos y enviar a guardar
-                var url = "{{URL::to('/venta')}}";
+                var url = "{{URL::to('/venta/ventas')}}";
                 var data = {
                     clienteId: cliente_id,
                     subtotal: subtotal,

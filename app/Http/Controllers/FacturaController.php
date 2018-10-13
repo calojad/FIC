@@ -7,7 +7,13 @@ use Illuminate\Support\Facades\Input;
 
 class FacturaController extends Controller
 {
-    public function generarfactura(Request $request){
+    public function getVentas(){
+        return view('facturacion.factura');
+    }
+    public function postVentas(Request $request){
         dd(Input::all());
+    }
+    public function getModallistaproductos(){
+        return view('facturacion.modals.listaProductos');
     }
 }

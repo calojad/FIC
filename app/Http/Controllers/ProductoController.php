@@ -129,7 +129,7 @@ class ProductoController extends AppBaseController
      * Mis Funciones del objeto Productos
      */
     // Listado de productos segun el codigo
-    public function autocompletecodigo(Request $request){
+    public function getAutocompletecodigo(Request $request){
         $search = $request->term;
         $productos = Producto::where('codigo','LIKE',$search.'%')
             ->get();
@@ -137,7 +137,7 @@ class ProductoController extends AppBaseController
         return response($lista);
     }
     // Listado de productos segun el nombre
-    public function autocompletenombre(Request $request){
+    public function getAutocompletenombre(Request $request){
         $search = $request->term;
         $productos = Producto::where('nombre','LIKE','%'.$search.'%')
             ->get();
