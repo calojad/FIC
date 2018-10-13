@@ -3,8 +3,9 @@
         <h3 class="box-title">Detalle</h3>
     </div>
     <div class="col-md-12" style="top: 10px;">
-        <input id="prodId" type="hidden" name="prodId">
-        <input id="prodPrecio" type="hidden" name="prodPrecio">
+        <input id="prodId" type="hidden">
+        <input id="prodPrecio" type="hidden">
+        <input id="prodStock" type="hidden">
         <div class="form-group col-md-3 serequiere">
             <label for="prodCodigo">Codigo:</label>
             <input id="prodCodigo" class="form-control" type="text" name="prodCodigo">

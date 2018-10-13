@@ -125,42 +125,23 @@ class ProductoController extends AppBaseController
         Flash::success('Producto deleted successfully.');
         return redirect(route('productos.index'));
     }
-
+    /*
+     * Mis Funciones del objeto Productos
+     */
+    // Listado de productos segun el codigo
     public function autocompletecodigo(Request $request){
-        $auto_productos = [0=>'No hay datos'];
         $search = $request->term;
         $productos = Producto::where('codigo','LIKE',$search.'%')
             ->get();
-        if(count($productos)!=0){
-            $auto_productos=null;
-            foreach ($productos as $producto){
-                $auto_productos[] = [
-                    'value' => $producto->id,
-                    'label' => $producto->codigo,
-                    'name' => $producto->nombre,
-                    'precio' => $producto->precio
-                ];
-            }
-        }
-        return response($auto_productos);
+        count($productos) !== 0 ? $lista = $productos : $lista = [0 => ['codigo'=>'No hay datos']];
+        return response($lista);
     }
-
+    // Listado de productos segun el nombre
     public function autocompletenombre(Request $request){
-        $auto_productos = [0=>'No hay datos'];
         $search = $request->term;
         $productos = Producto::where('nombre','LIKE','%'.$search.'%')
             ->get();
-        if(count($productos)!=0){
-            $auto_productos=null;
-            foreach ($productos as $producto){
-                $auto_productos[] = [
-                    'value' => $producto->id,
-                    'label' => $producto->nombre,
-                    'codigo' => $producto->codigo,
-                    'precio' => $producto->precio
-                ];
-            }
-        }
-        return response($auto_productos);
+        count($productos) !== 0 ? $lista = $productos : $lista = [0 => ['codigo'=>'No hay datos']];
+        return response($lista);
     }
 }

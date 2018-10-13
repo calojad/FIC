@@ -132,26 +132,16 @@ class ClienteController extends AppBaseController
         Flash::success('Cliente deleted successfully.');
         return redirect(route('clientes.index'));
     }
-
+    /*
+     * Mis funciones del objeto cliente
+     */
     public function autocomplete(Request $request)
     {
-        $auto_clientes = [0 => 'No hay datos'];
         $search = $request->term;
         $clientes = Cliente::where('cedula', 'LIKE', $search . '%')
             ->get();
-        if (count($clientes) != 0) {
-            $auto_clientes = null;
-            foreach ($clientes as $cliente) {
-                $auto_clientes[] = [
-                    'value' => $cliente->id,
-                    'label' => $cliente->cedula,
-                    'desc' => $cliente->nombres . ' ' . $cliente->apellidos,
-                    'dirc' => $cliente->direccion,
-                    'telf' => $cliente->telefono,
-                    'email' => $cliente->email
-                ];
-            }
-        }
-        return response($auto_clientes);
+        count($clientes) !== 0 ? $lista = $clientes : $lista = [0 => ['cedula'=>'No hay datos']];
+
+        return response($lista);
     }
 }

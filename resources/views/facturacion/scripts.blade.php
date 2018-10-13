@@ -6,20 +6,20 @@
             source: '{{URL::to('venta/search/cliente')}}',
             minLength: 2,
             focus: function (event, ui) {
-                $("#cedula").val(ui.item.label);
+                $("#cedula").val(ui.item.cedula);
                 return false;
             },
             select: function (event, ui) {
-                $('#clienteId').val(ui.item.value);
-                $("#ddCliente").html(ui.item.desc);
-                $("#ddDireccion").html(ui.item.dirc);
-                $("#ddTelefono").html(ui.item.telf);
+                $('#clienteId').val(ui.item.id);
+                $("#ddCliente").html(ui.item.nombres + ' ' +ui.item.apellidos);
+                $("#ddDireccion").html(ui.item.direccion);
+                $("#ddTelefono").html(ui.item.telefono);
                 $("#ddEmail").html(ui.item.email);
                 $('#divCIRUC').removeClass('has-error');
                 return false;
             }
         }).autocomplete("instance")._renderItem = function (ul, item) {
-            return $("<li>").append("<div style='border-bottom: 1px solid gray'>" + item.label + " - " + item.desc + "</div>").appendTo(ul);
+            return $("<li>").append("<div style='border-bottom: 1px solid gray'>" + item.cedula + " - " + item.razon_social + "</div>").appendTo(ul);
         };
     });
     // Autocomplite para buscar un producto por su codigo
@@ -28,15 +28,17 @@
             source: '{{URL::to('venta/search/producto/codigo')}}',
             minLength: 2,
             focus: function (event, ui) {
-                $("#prodCodigo").val(ui.item.label);
+                $("#prodCodigo").val(ui.item.codigo);
                 return false;
             },
             select: function (event, ui) {
-                $('#prodNombre').val(ui.item.name);
+                $('#prodNombre').val(ui.item.nombre);
                 asignarValores(ui);
                 return false;
             }
-        });
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            return $("<li>").append("<div style='border-bottom: 1px solid gray'>" + item.codigo + "</div>").appendTo(ul);
+        };
     });
     // Autocomplite para buscar un producto por su nombre
     $('#prodNombre').on('input', function () {
@@ -44,7 +46,7 @@
             source: '{{URL::to('venta/search/producto/nombre')}}',
             minLength: 2,
             focus: function (event, ui) {
-                $("#prodNombre").val(ui.item.label);
+                $("#prodNombre").val(ui.item.nombre);
                 return false;
             },
             select: function (event, ui) {
@@ -52,16 +54,20 @@
                 asignarValores(ui);
                 return false;
             }
-        });
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            return $("<li>").append("<div style='border-bottom: 1px solid gray'>" + item.nombre + "</div>").appendTo(ul);
+        };
     });
     // Boton "Añadir"
     $('#btnAddProducto').on('click', function () {
-        addDetalle();
+        var id = $('#prodId');
+        addDetalle(id);
     });
     // Input cantidad, al presionar enter
     $('#prodCantidad, #prodNombre, #prodCodigo').on('keypress', function (e) {
         if (e.which === 13) {
-            addDetalle();
+            var id = $('#prodId');
+            addDetalle(id);
         }
     });
     // Input cantidad en la tabla; cambia cantidad y calcule el nuevo valor del producto
@@ -130,7 +136,7 @@
 
                 }, 'json');
             } else {
-                alertaError('No existen productos en el detalle de la factura. Escriba el codigo o el nombre del producto', $('.serequiere'),$('#prodCodigo'));
+                alertaError('No existen productos en el detalle de la factura. Escriba el codigo o el nombre del producto', $('.serequiere'), $('#prodCodigo'));
             }
         } else {
             alertaError('Debe seleccionar un cliente; ingrese su numero de cédula o RUC.', $('#divCIRUC'), $('#cedula'));
@@ -150,46 +156,49 @@
             responsive: true
         });
     });
-
     // Funcion para asignar valores cuando selecciona un producto en el autocomplite
     function asignarValores(ui) {
-        $('#prodId').val(ui.item.value);
+        $('#prodId').val(ui.item.id);
         $('#prodCantidad').val(1);
         $('#prodPrecio').val(ui.item.precio);
+        $('#prodStock').val(ui.item.stock);
         $('#spnRequiredCodigo').empty();
         $('.serequiere').removeClass('has-error');
     }
-
     // Funcion para agregar el producto a la tabla detalle
-    function addDetalle() {
-        var id = $('#prodId');
-        if (id.val() !== '') {
-            var t = $('#tblDetalle').DataTable();
-            var cod = $('#prodCodigo');
+    function addDetalle(id) {
+        var cod = $('#prodCodigo');
+        var prod = $('#prodNombre');
+        if (id.val() !== '' && cod.val() !== '' && prod.val() !== '') {
             var cant = $('#prodCantidad');
-            var prec = $('#prodPrecio');
-            var prod = $('#prodNombre');
-            var total = cant.val() * prec.val();
-            t.row.add(['<p><span class="productosIds">' + id.val() + '</span>-' + cod.val() + '</p>', /*Codigo*/
-                '<p>' + prod.val() + '</p>', /*Descripcion*/
-                '<input id="cantidad_' + id.val() + '" class="inpCantidad" type="number" value="' + cant.val() + '" style="width: 60px;text-align: right" productoId="' + id.val() + '">', /*Cantidad*/
-                '<p>$ <span id="precio_' + id.val() + '">' + prec.val() + '</span></p>', /*Precio*/
-                '<input id="descuento_porc_' + id.val() + '" class="inpDescuento" type="number" value="0" style="width: 60px;text-align: right" productoId="' + id.val() + '"><input id="descuento_' + id.val() + '" class="valDescuento" type="hidden">', /*Descuento*/
-                '<p>$ <strong id="total_' + id.val() + '" class="totalProducto">' + total.toFixed(2) + '</strong></p>', /*Total*/
-                '<a class="btn btn-danger btnEliminarProducto"><i class="fa fa-trash"></i></a>'
-            ]).draw(false);
-            id.val('');
-            cod.val('');
-            cant.val('');
-            prec.val('');
-            prod.val('');
+            var stock = $('#prodStock');
+            if (stock.val() > cant.val()) {
+                var t = $('#tblDetalle').DataTable();
+                var prec = $('#prodPrecio');
+                var total = cant.val() * prec.val();
+                t.row.add(['<p><span class="productosIds">' + id.val() + '</span>-' + cod.val() + '</p>', /*Codigo*/
+                    '<p>' + prod.val() + '</p>', /*Descripcion*/
+                    '<input id="cantidad_' + id.val() + '" class="inpCantidad" type="number" value="' + cant.val() + '" style="width: 60px;text-align: right" productoId="' + id.val() + '">', /*Cantidad*/
+                    '<p>$ <span id="precio_' + id.val() + '">' + prec.val() + '</span></p>', /*Precio*/
+                    '<input id="descuento_porc_' + id.val() + '" class="inpDescuento" type="number" value="0" style="width: 60px;text-align: right" productoId="' + id.val() + '"><input id="descuento_' + id.val() + '" class="valDescuento" type="hidden">', /*Descuento*/
+                    '<p>$ <strong id="total_' + id.val() + '" class="totalProducto">' + total.toFixed(2) + '</strong></p>', /*Total*/
+                    '<a class="btn btn-danger btnEliminarProducto"><i class="fa fa-trash"></i></a>'
+                ]).draw(false);
+                id.val('');
+                cod.val('');
+                cant.val('');
+                prec.val('');
+                prod.val('');
+            } else {
+                $('#spnRequiredCodigo').html('No existen productos suficientes.');
+                $('.serequiere').addClass('has-error');
+            }
         } else {
-            $('#spnRequiredCodigo').html('Seleccione un Producto');
+            $('#spnRequiredCodigo').html('Seleccione un Producto valido.');
             $('.serequiere').addClass('has-error');
         }
         calcularTotales();
     }
-
     // Funcion para calcular el total de la factura
     function calcularTotales() {
         var subtotal = 0;
@@ -207,7 +216,6 @@
         $('#descuento').html(descueto.toFixed(2));
         $('#totalTotal').html(totalT.toFixed(2));
     }
-
     // Funcion alerta de error
     function alertaError(mensaje, campo_req, input_req) {
         $.alert({
