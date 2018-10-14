@@ -33,7 +33,7 @@
             },
             select: function (event, ui) {
                 $('#prodNombre').val(ui.item.nombre);
-                asignarValores(ui);
+                asignarValores(ui.item);
                 return false;
             }
         }).autocomplete("instance")._renderItem = function (ul, item) {
@@ -51,7 +51,7 @@
             },
             select: function (event, ui) {
                 $('#prodCodigo').val(ui.item.codigo);
-                asignarValores(ui);
+                asignarValores(ui.item);
                 return false;
             }
         }).autocomplete("instance")._renderItem = function (ul, item) {
@@ -61,23 +61,26 @@
     // Boton "Añadir"
     $('#btnAddProducto').on('click', function () {
         var id = $('#prodId');
-        addDetalle(id);
+        addDetalle(id.val());
     });
     // Input cantidad, al presionar enter
     $('#prodCantidad, #prodNombre, #prodCodigo').on('keypress', function (e) {
         if (e.which === 13) {
             var id = $('#prodId');
-            addDetalle(id);
+            addDetalle(id.val());
         }
     });
-    // Boton buscar producto
+    // Boton modal buscar producto
     $('#btnBuscarProducto').on('click', function () {
         $.dialog({
             title: 'Listado de Productos',
-            content: 'url:/venta/modallistaproductos',
+            content: 'url:/producto/modallista',
             icon: 'fa fa-archive',
-            columnClass: 'large',
+            type: 'blue',
+            boxWidth: '800px',
+            useBootstrap: false,
             escapeKey: true,
+            offsetTop: 20,
             backgroundDismiss: true,
         });
     });
@@ -168,11 +171,11 @@
         });
     });
     // Funcion para asignar valores cuando selecciona un producto en el autocomplite
-    function asignarValores(ui) {
-        $('#prodId').val(ui.item.id);
+    function asignarValores(item) {
+        $('#prodId').val(item.id);
         $('#prodCantidad').val(1);
-        $('#prodPrecio').val(ui.item.precio);
-        $('#prodStock').val(ui.item.stock);
+        $('#prodPrecio').val(item.precio);
+        $('#prodStock').val(item.stock);
         $('#spnRequiredCodigo').empty();
         $('.serequiere').removeClass('has-error');
     }
@@ -180,22 +183,22 @@
     function addDetalle(id) {
         var cod = $('#prodCodigo');
         var prod = $('#prodNombre');
-        if (id.val() !== '' && cod.val() !== '' && prod.val() !== '') {
+        if (id !== '' && cod.val() !== '' && prod.val() !== '') {
             var cant = $('#prodCantidad');
             var stock = $('#prodStock');
             if (stock.val() > cant.val()) {
                 var t = $('#tblDetalle').DataTable();
                 var prec = $('#prodPrecio');
                 var total = cant.val() * prec.val();
-                t.row.add(['<p><span class="productosIds">' + id.val() + '</span>-' + cod.val() + '</p>', /*Codigo*/
+                t.row.add(['<p><span class="productosIds">' + id + '</span>-' + cod.val() + '</p>', /*Codigo*/
                     '<p>' + prod.val() + '</p>', /*Descripcion*/
-                    '<input id="cantidad_' + id.val() + '" class="inpCantidad" type="number" value="' + cant.val() + '" style="width: 60px;text-align: right" productoId="' + id.val() + '">', /*Cantidad*/
-                    '<p>$ <span id="precio_' + id.val() + '">' + prec.val() + '</span></p>', /*Precio*/
-                    '<input id="descuento_porc_' + id.val() + '" class="inpDescuento" type="number" value="0" style="width: 60px;text-align: right" productoId="' + id.val() + '"><input id="descuento_' + id.val() + '" class="valDescuento" type="hidden">', /*Descuento*/
-                    '<p>$ <strong id="total_' + id.val() + '" class="totalProducto">' + total.toFixed(2) + '</strong></p>', /*Total*/
+                    '<input id="cantidad_' + id + '" class="inpCantidad" type="number" value="' + cant.val() + '" style="width: 60px;text-align: right" productoId="' + id + '">', /*Cantidad*/
+                    '<p>$ <span id="precio_' + id + '">' + prec.val() + '</span></p>', /*Precio*/
+                    '<input id="descuento_porc_' + id + '" class="inpDescuento" type="number" value="0" style="width: 60px;text-align: right" productoId="' + id + '"><input id="descuento_' + id + '" class="valDescuento" type="hidden">', /*Descuento*/
+                    '<p>$ <strong id="total_' + id + '" class="totalProducto">' + total.toFixed(2) + '</strong></p>', /*Total*/
                     '<a class="btn btn-danger btnEliminarProducto"><i class="fa fa-trash"></i></a>'
                 ]).draw(false);
-                id.val('');
+                $('#prodId').val('');
                 cod.val('');
                 cant.val('');
                 prec.val('');

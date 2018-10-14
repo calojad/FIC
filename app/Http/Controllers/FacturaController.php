@@ -13,7 +13,4 @@ class FacturaController extends Controller
     public function postVentas(Request $request){
         dd(Input::all());
     }
-    public function getModallistaproductos(){
-        return view('facturacion.modals.listaProductos');
-    }
 }

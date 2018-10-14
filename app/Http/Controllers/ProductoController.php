@@ -141,7 +141,11 @@ class ProductoController extends AppBaseController
         $search = $request->term;
         $productos = Producto::where('nombre','LIKE','%'.$search.'%')
             ->get();
-        count($productos) !== 0 ? $lista = $productos : $lista = [0 => ['codigo'=>'No hay datos']];
+        count($productos) !== 0 ? $lista = $productos : $lista = [0 => ['nombre'=>'No hay datos']];
         return response($lista);
+    }
+    public function getModallista(){
+        $productos = Producto::all();
+        return view('facturacion.modals.listaProductos',compact('productos'));
     }
 }
