@@ -43,6 +43,8 @@
     $('.btnLoader').on('click',function () {
         $(".preloader").fadeIn("slow");
     });
+    $('div.alert').not('.alert-important').delay(5000).fadeOut(500);
+    $('#flash-overlay-modal').modal();
 </script>
 @yield('scripts')
 </body>

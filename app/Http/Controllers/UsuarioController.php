@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
 use App\Repositories\UsuarioRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -107,7 +106,7 @@ class UsuarioController extends AppBaseController
     /**
      * Update the specified Usuario in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateUsuarioRequest $request
      *
      * @return Response

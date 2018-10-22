@@ -21,13 +21,16 @@
     </ol>
 @endsection
 @section('content')
+    <div class="clearfix"></div>
+    @include('flash::message')
+    <div class="clearfix"></div>
     <div class="box box-warning box-solid">
         @include('facturacion.cabecera')
         @include('facturacion.detalle')
         <div class="box-footer">
             <div class="col-md-11">
                 <div class="col-md-6 pull-left">
-                    <a id="btnGuardarFactura" class="btn btn-primary"><i class="fa fa-save"></i> Guardar Factura</a>
+                    <a id="btnGuardarFactura" class="btn btn-primary btnLoader"><i class="fa fa-save"></i> Guardar Factura</a>
                 </div>
                 <div class="col-md-6">
                     <dl class="dl-horizontal pull-right" style="font-size: 13pt;text-align: right">

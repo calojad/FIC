@@ -147,7 +147,7 @@
                     _token: "{{csrf_token()}}"
                 };
                 $.post(url, data, function (json) {
-
+                    window.location.href = json.url;
                 }, 'json');
             } else {
                 alertaError('No existen productos en el detalle de la factura. Escriba el codigo o el nombre del producto', $('.serequiere'), $('#prodCodigo'));
@@ -247,6 +247,7 @@
                     text: 'Aceptar',
                     btnClass: 'btn-red',
                     action: function () {
+                        $(".preloader").fadeOut("slow");
                         input_req.focus();
                     }
                 }

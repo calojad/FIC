@@ -6,7 +6,7 @@ use App\Http\Requests\CreateClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 use App\Models\Cliente;
 use App\Repositories\ClienteRepository;
-use Flash;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
