@@ -18,7 +18,7 @@
         </div>
         <div class="form-group col-md-2">
             <label for="prodCantidad">Cantidad:</label>
-            <input id="prodCantidad" class="form-control" type="number" name="prodCantidad">
+            <input id="prodCantidad" class="form-control" type="number" name="prodCantidad" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
         </div>
         <div class="form-group col-md-3">
             <br>
