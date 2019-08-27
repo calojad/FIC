@@ -194,7 +194,7 @@
                     '<p>' + prod.val() + '</p>', /*Descripcion*/
                     '<input id="cantidad_' + id + '" class="inpCantidad" type="number" value="' + cant.val() + '" style="width: 60px;text-align: right" productoId="' + id + '" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">', /*Cantidad*/
                     '<p>$ <span id="precio_' + id + '">' + prec.val() + '</span></p>', /*Precio*/
-                    '<input id="descuento_porc_' + id + '" class="inpDescuento" type="number" value="0" style="width: 60px;text-align: right" productoId="' + id + '" onkeypress="return NumCheck(event, this)"><input id="descuento_' + id + '" class="valDescuento" type="hidden">', /*Descuento*/
+                    '<input id="descuento_porc_' + id + '" class="inpDescuento" type="text" value="0" style="width: 60px;text-align: right" productoId="' + id + '" onkeypress="return NumCheck(event, this)"><input id="descuento_' + id + '" class="valDescuento" type="hidden">', /*Descuento*/
                     '<p>$ <strong id="total_' + id + '" class="totalProducto">' + total.toFixed(2) + '</strong></p>', /*Total*/
                     '<a class="btn btn-danger btnEliminarProducto"><i class="fa fa-trash"></i></a>'
                 ]).draw(false);
@@ -255,22 +255,25 @@
         });
         campo_req.addClass('has-error');
     }
-    function NumCheck(e, field) {
-      key = e.keyCode ? e.keyCode : e.which
-      // backspace
-      if (key == 8) return true
-      // 0-9
-      if (key > 47 && key < 58) {
-        if (field.value == "") return true
-        regexp = /,[0-9]{2}$/
-        return !(regexp.test(field.value))
-      }
-      if (key == 44) {
-        if (field.value == "") return false
-        regexp = /^[0-9]+$/
-        return regexp.test(field.value)
-      }
-      // other key
-      return false
+    function NumCheck(evt,input) {
+        // Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ‘.’ = 46, ‘-’ = 43
+        var key = window.Event ? evt.which : evt.keyCode;
+        var chark = String.fromCharCode(key);
+        var tempValue = input.value+chark;
+        if(key >= 48 && key <= 57){
+            return filter(tempValue) !== false;
+        }else{
+            if(key == 8 || key == 13 || key == 0) {
+                return true;
+            }else if(key === 46){
+                return filter(tempValue) !== false;
+            }else{
+                return false;
+            }
+        }
+    }
+    function filter(__val__){
+        var preg = /^([0-9]+\.?[0-9]{0,2})$/;
+        return preg.test(__val__) === true;
     }
 </script>
