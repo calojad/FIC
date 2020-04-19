@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\CabFactura;
 use App\Models\DetFactura;
+use App\Models\Factura;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 
 class FacturaController extends Controller
 {
+    // GET VENTANA DE VENTAS
     public function getVentas()
     {
         return view('facturacion.factura');
     }
-
+    // POST VENTAS (FACTURA)
     public function postVentas(Request $request)
     {
         $fac_cabecera['num_factura'] = '001-001-000001';
@@ -39,5 +41,15 @@ class FacturaController extends Controller
 
         Flash::success('Factura guardada exitosamente.')->important();
         return json_encode(['url' => '/venta/ventas']);
+    }
+    // GET TABLA FACTURAS
+    public function getFacturas(){
+        $facturas = Factura::all();
+        return view('facturas.index',compact('facturas'));
+    }
+    public function index(Request $request)
+    {
+        $facturas = Factura::all();
+        return view('facturas.index')->with('facturas', $facturas);
     }
 }

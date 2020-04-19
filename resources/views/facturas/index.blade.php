@@ -2,12 +2,11 @@
 @section('contentHeader')
     <h1>
         {{config('app.name','FIC')}}
-        <small>Productos</small>
+        <small>Facturas</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/home"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a>Mantenimiento</a></li>
-        <li><a>Productos</a></li>
+        <li><a href="{{URL::to('/home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a>Facturas</a></li>
     </ol>
 @endsection
 @section('content')
@@ -17,12 +16,14 @@
     <div class="box box-primary">
         <div class="box-body">
             <div class="col-md-12">
-                <a class="btn btn-primary pull-right" style="margin-bottom: 5px" href="{!! route('productos.create') !!}">Add New</a>
+                <a class="btn btn-primary pull-right" style="margin-bottom: 5px" href=""><i class="fa fa-plus"></i>
+                    Add New</a>
             </div>
             <div class="col-md-12 table-responsive">
-                @include('productos.table')
+                @include('facturas.table')
             </div>
         </div>
     </div>
-    @include('productos.scripts')
+    @include('facturas.scripts')
 @endsection
+

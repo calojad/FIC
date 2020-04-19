@@ -16,6 +16,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/home"><span class="glyphicon glyphicon-home"></span></a></li>
                     <li><a class="btnLoader" href="{{URL::to('/venta/ventas')}}" ><span class="glyphicon glyphicon-shopping-cart" style="color: #FD7B1D"></span> Ventas</a></li>
+                    <li><a class="btnLoader" href="{{URL::to('/facturas')}}" ><span class="fa fa-file-invoice-dollar" style="color: #ad1457"></span> Facturas</a></li>
                     <li><a class="btnLoader" href="#"><span class="glyphicon glyphicon-barcode" style="color: #00C853"></span> Inventario</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench" style="color: #D50000"></span> Mantenimiento <span class="caret"></span></a>
@@ -31,7 +32,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a class="btnLoader" href="#"><i class="fa fa-gear"></i> Configuración</a>
+                                <a class="btnLoader" href="javascript:void(0)"><i class="fa fa-cog"></i> Configuración</a>
                             </li>
                         </ul>
                     </li>
